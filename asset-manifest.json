@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/genai/static/css/main.8e8fba7d.css",
+    "main.js": "/genai/static/js/main.6bc7e040.js",
+    "static/media/profile.jpg": "/genai/static/media/profile.84a2e62fceabfd89d41a.jpg",
+    "static/media/Login png bg.png": "/genai/static/media/Login png bg.b180816446884f23210e.png",
+    "static/media/logo2.png": "/genai/static/media/logo2.9471cd21edcd008252e9.png",
+    "index.html": "/genai/index.html",
+    "main.8e8fba7d.css.map": "/genai/static/css/main.8e8fba7d.css.map",
+    "main.6bc7e040.js.map": "/genai/static/js/main.6bc7e040.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8e8fba7d.css",
+    "static/js/main.6bc7e040.js"
+  ]
+}
