@@ -88,7 +88,7 @@ ul.MuiList-root.MuiList-padding.css-h4y409-MuiList-root{
     margin-left: 200px;
     margin-right: 200px;
     background-color: #fefefe;
-    border: 1px solid black;
+    border: 1px solid black !important;
     border-radius: 10px;
     font-family: "Roboto", sans-serif;
     font-weight: 550;
