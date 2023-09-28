@@ -15,11 +15,11 @@ import {
 } from "@mui/material"; // Import necessary components from Material-UI
 import VisibilityIcon from "@mui/icons-material/VisibilityOutlined";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOffOutlined";
-
+import { useNavigate } from "react-router-dom";
 function LogIn() {
   const [showPassword, setShowPassword] = useState(false); // State to toggle password visibility
   const handleClickShowPassword = () => setShowPassword(!showPassword);
-
+const navigate = useNavigate()
   return (
     <div className="container back-imag">
       <div className="loginLeft">
@@ -143,6 +143,7 @@ function LogIn() {
                   fontSize: "17px",
                 }}
                 className="form-btn"
+                onClick={()=>navigate('/welcomepage')}
               >
                 Log In
               </Button>
