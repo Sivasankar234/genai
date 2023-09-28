@@ -275,7 +275,7 @@ function WelcomePage() {
                   }}
                 />
               </div>
-              <div className="discription" style={{border:'3px solid yellow',backgroundColor:'blue'}}>
+              <div className="discription" >
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi,
                 deleniti minus ullam omnis optio autem voluptas porro quas
                 adipisci ratione explicabo aut pariatur cupiditate repellendus
