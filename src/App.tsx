@@ -2,10 +2,11 @@ import React from 'react';
 import './App.css';
 import LogIn from './components/LogIn';
 import WelcomePage from './components/WelcomePage';
+
 // import ChatPage from './components/ChatPage';
 
 import { BrowserRouter , Route, Routes } from  "react-router-dom";
-
+import '../dummy.css'
 function App() {
   return (
     <div className="App">
