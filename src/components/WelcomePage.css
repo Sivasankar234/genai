@@ -1,0 +1,190 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;500&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500&display=swap");
+
+hr.MuiDivider-root.MuiDivider-fullWidth.css-9mgopn-MuiDivider-root {
+    border-color: #fefefe;
+}
+
+.MuiToolbar-root.MuiToolbar-gutters.MuiToolbar-regular.css-hyum1k-MuiToolbar-root {
+    background-color: #fefefe;
+    box-shadow: -1px 5px 0px 20px white;
+    border-bottom: 1px solid #c0bbbb;
+  /* background-image: url('../Images/Cloudside\ Logo.png'); */
+  background-repeat: no-repeat;
+  margin: 9px 17px;
+
+}
+header.MuiPaper-root.MuiPaper-elevation.MuiPaper-elevation4.MuiAppBar-root.MuiAppBar-colorPrimary.MuiAppBar-positionFixed.mui-fixed.css-1ksogs-MuiPaper-root-MuiAppBar-root{
+  background-color: #fff;
+  box-shadow: 0 0 0 0;
+}
+header.MuiPaper-root.MuiPaper-elevation.MuiPaper-elevation4.MuiAppBar-root.MuiAppBar-colorPrimary.MuiAppBar-positionFixed.mui-fixed.css-1ksogs-MuiPaper-root-MuiAppBar-root{
+  background-color: #fff;
+  box-shadow: 0 0 0 0;
+}
+.logo{
+    margin-top: 35px;
+    margin-bottom: -54px;
+    z-index: 1;
+    width: 150px;
+    margin-left: 25px;
+}
+
+button.MuiButtonBase-root.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary.MuiButton-sizeMedium.MuiButton-containedSizeMedium.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary.MuiButton-sizeMedium.MuiButton-containedSizeMedium.css-1etrtkn-MuiButtonBase-root-MuiButton-root {
+    background-color: #022e58;
+    /* margin-left: 80px; */
+}
+
+button.MuiButtonBase-root.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary.MuiButton-sizeMedium.MuiButton-containedSizeMedium.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary.MuiButton-sizeMedium.MuiButton-containedSizeMedium.css-yet3r3-MuiButtonBase-root-MuiButton-root {
+    background-color: #043360;
+    margin-left: 30px;
+    text-transform: capitalize;
+    margin-top: 30px;
+    padding: 10px 20px 10px 20px;
+
+}
+main.MuiBox-root.css-1jmjcem {
+    padding: 0;
+}
+main.MuiBox-root.css-y4nzsw{
+  padding: 0;
+}
+
+.MuiToolbar-root.MuiToolbar-gutters.MuiToolbar-regular.css-hyum1k-MuiToolbar-root {
+    border-bottom: 0;
+}
+.MuiToolbar-root.MuiToolbar-gutters.MuiToolbar-regular.css-u4fbkj-MuiToolbar-root {
+    border-bottom: 1px solid lightgray;
+    background-color: #ffffff;
+}
+.MuiToolbar-root.MuiToolbar-gutters.MuiToolbar-regular.css-u4fbkj-MuiToolbar-root{
+    border-bottom: 1px solid #ffffff;
+    background-color: white;
+    box-shadow: 0px 9px;
+    margin-left: 80px;
+    margin-right: 50px;
+    margin-top: 20px;
+}
+header.MuiPaper-root.MuiPaper-elevation.MuiPaper-elevation4.MuiAppBar-root.MuiAppBar-colorPrimary.MuiAppBar-positionFixed.mui-fixed.css-49ifcl-MuiPaper-root-MuiAppBar-root{
+    border-bottom: 0px solid lightgray;
+    background-color: white;
+    box-shadow: 0px 9px;
+}
+ul.MuiList-root.MuiList-padding.css-h4y409-MuiList-root{
+  margin-left: 29px;
+}
+  .MuiPaper-root.MuiPaper-elevation.MuiPaper-elevation0.MuiDrawer-paper.MuiDrawer-paperAnchorLeft.MuiDrawer-paperAnchorDockedLeft.css-12i7wg6-MuiPaper-root-MuiDrawer-paper{
+    left: 0px;
+    width: 288px;
+  }
+
+  p.MuiTypography-root.MuiTypography-body1.MuiTypography-paragraph.css-z2eky3-MuiTypography-root{
+    margin-top: 50px;
+    padding: 80px 46px 20px 20px;
+    
+    margin-left: 200px;
+    margin-right: 200px;
+    background-color: #fefefe;
+    border: 1px solid black;
+    border-radius: 10px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 550;
+    color: gray;
+    
+  }
+  main.MuiBox-root.css-bxtlg9{
+    background-color: white;
+    padding: 0px 0 40px 0px;
+    margin-left: 30px;
+  }
+  main.MuiBox-root.css-1g842pd{
+    padding: 0;
+  }
+.main_content{
+  margin-top: 47px;
+  margin-left: 200px;
+  margin-right: 200px;
+  padding-bottom: 150px;
+  text-align: justify;
+}
+  .btn_disc{
+    display: flex ;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(-15px);
+  }
+  .discription{
+    margin-bottom: 40px;
+    transform: translateY(-20px);
+  }
+  .chat-input-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px; /* You can adjust the height as needed */
+    background-color: #fff; /* Set the background color of the chat input container */
+    display: flex;
+    align-items: center;
+    /* margin: 50px; */
+    padding: 70px 10px; /* Add some padding to the chat input container */
+    box-shadow: 0px -5px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow to separate it from the content */
+  }
+  
+  .chat_input{
+    width: 1180px;
+    height: 50px;
+    border-radius: 15px;
+    border: 2px solid rgb(151, 149, 149);
+    margin-left: 450px;
+  }
+  .chat_input:focus {
+    outline: none;
+    box-shadow: none;
+    
+  }
+  .chat_input::placeholder {
+    color: #999; /* Change the color to your desired placeholder color */
+   font-size: large; /* Optionally, you can style the placeholder text further */
+    transform: translateX(30px);
+  }
+  /* ChatBubble.css */
+
+  .talk-bubble {
+    margin: 40px;
+    display: inline-block;
+    position: relative;
+    width: 200px;
+    height: auto;
+    background-color: lightyellow;
+  }
+  .tri-right.left-top:after{
+    content: ' ';
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: -20px;
+    right: auto;
+    top: 0px;
+    bottom: auto;
+    border: 22px solid;
+    border-color: lightyellow transparent transparent transparent;
+  }
+
+  @media (min-width: 675) {
+    .MuiBox-root.css-unpf1n {
+      position: fixed;
+      top: 822px;
+      left: 30px;
+  }
+  }
+  @media (min-width: 768) {
+    .sidebar-icons {
+      position: fixed;
+      top: 700px;
+      left: 30px;
+  }
+  }

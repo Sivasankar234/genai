@@ -1,0 +1,203 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;500&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500&display=swap");
+
+.back-imag {
+  background-image: url("../Images/Login png bg.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover; /* Cover the entire viewport */
+  min-height: 100vh;
+}
+
+.container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  /* padding: 20px; */
+}
+
+.loginLeft {
+  flex: 3;
+  padding: 20px;
+  max-width: max-content;
+  margin-left: 160px;
+  transform: translateY(80px);
+}
+.card-div {
+  padding: 30px;
+  margin-right: 100px;
+}
+.login-card {
+  width: 500px;
+  height: 550px;
+  transform: translateY(60px);
+}
+.cloud-logo {
+  margin-bottom: 50px;
+  transform: translateY(30px);
+}
+.login-form {
+  margin-top: 19px;
+}
+.form-input {
+  transform: translateY(30px);
+}
+
+.form-btn {
+  transform: translateY(40px);
+}
+
+.user-label {
+  color: #c0bbbb !important;
+  font-size: 13px;
+  font-weight: 400 !important;
+  font-family: "Roboto", sans-serif;
+}
+.login-title {
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
+  font-size: 25px;
+  transform: translateY(20px);
+}
+.loginLeft img {
+  width: 250px;
+  height: 250px;
+  transform: translateY(20px);
+}
+.loginRight p {
+  color: #383e55;
+  font-family: "Roboto", sans-serif;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 40px;
+  position: relative;
+  top: 30px;
+}
+.well {
+  color: #fefefe;
+  font-family: "Roboto", sans-serif;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 500;
+  transform: translateY(-30px);
+}
+.quote {
+  color: #fefefe;
+  text-align: center;
+  font-family: "Roboto";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  transform: translateY(-30px);
+}
+.css-v4u5dn-MuiInputBase-root-MuiInput-root:hover:not(
+    .Mui-disabled,
+    .Mui-error
+  ):before {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.42) !important;
+}
+.css-v4u5dn-MuiInputBase-root-MuiInput-root:after {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.42) !important;
+}
+.css-1m9pwf3 {
+  cursor: inherit;
+  position: absolute;
+  opacity: 1 !important;
+  width: 47% !important;
+  height: 100% !important;
+  top: 0;
+  left: 11px !important;
+  margin: 0;
+  padding: 0;
+  z-index: 1;
+}
+
+/* Common styles for all screen sizes */
+
+/* Styles for screens with a maximum width of 768px */
+@media (max-width: 768px) {
+  .loginLeft {
+    flex: 1;
+    margin-left: 1;
+  }
+
+  .login-card {
+    margin: 10px;
+    padding: 10px;
+  }
+
+  .loginRight p {
+    font-size: 24px;
+    padding: 10px;
+  }
+
+  .well,
+  .quote {
+    font-size: 24px;
+    padding: 10px;
+  }
+  .back-imag {
+    background-image: url("../Images/Login png bg.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%; /* Cover the entire viewport */
+    min-height: 100vh;
+    width: fit-content;
+    /* height: 100%; */
+  }
+}
+
+
+@media (max-width: 886px) {
+  .loginLeft {
+    flex: 1;
+    margin-left: 0.2;
+  }
+
+  .login-card {
+    margin: 10px;
+    padding: 10px;
+  }
+
+  .loginRight p {
+    font-size: 24px;
+    padding: 10px;
+  }
+
+  .well,
+  .quote {
+    font-size: 24px;
+    padding: 10px;
+  }
+}
+
+/* Styles for mobile phones (up to 480px wide) */
+@media (max-width: 480px) {
+  
+
+  .login-card {
+    margin: 5px;
+    padding: 5px;
+  }
+
+  .loginRight p {
+    font-size: 20px;
+    padding: 5px;
+  }
+
+  .well,
+  .quote {
+    font-size: 20px;
+    padding: 5px;
+  }
+}
