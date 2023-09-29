@@ -86,7 +86,7 @@ function WelcomePage() {
           }}
         >
           <Typography variant="h6" noWrap component="div" color="#022e58">
-            Welcome Back
+            Welcome Back !
           </Typography>
           <div style={{ display: "flex", alignItems: "center" }}>
             <div>
@@ -145,7 +145,7 @@ function WelcomePage() {
         <Toolbar />
         <Button
           variant="contained"
-          sx={{ width: "170px", borderRadius: "10px",backgroundColor:'#043360',textTransform:'capitalize' }}
+          sx={{ width: "170px", borderRadius: "10px",backgroundColor:'#043360',textTransform:'capitalize',marginLeft:'50px' }}
         >
           + New Topic
         </Button>
@@ -270,13 +270,24 @@ function WelcomePage() {
                   sx={{
                     fontSize: "45px",
                     position: "relative",
-                    bottom: "50px",
+                    top: "46px",
+                    zIndex:'1',
+                    // marginTop:'50px',
                     color: "#fc5a03",
                   }}
                 />
               </div>
               <div className="discription" >
-                
+                <Typography  component='p' sx={{
+                marginBottom:'50px',
+                padding:'80px 46px 80px 20px',
+                margin:'0px 200px',
+                border:'1px solid black',
+                borderRadius:'10px',
+               fontWeight:'550',
+               color:'gray',
+               backgroundColor:'#fefefe'
+                }}>
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi,
                 deleniti minus ullam omnis optio autem voluptas porro quas
                 adipisci ratione explicabo aut pariatur cupiditate repellendus
@@ -285,6 +296,9 @@ function WelcomePage() {
                 minus ullam omnis optio autem voluptas porro quas adipisci
                 ratione explicabo aut pariatur cupiditate repellendus
                 voluptatum. Laboriosam asperiores nostrum ipsum?
+                </Typography>
+                
+              
               </div>
 
               <div className="btn_disc">

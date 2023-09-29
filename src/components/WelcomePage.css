@@ -33,10 +33,10 @@ header.MuiPaper-root.MuiPaper-elevation.MuiPaper-elevation4.MuiAppBar-root.MuiAp
     margin-left: 25px;
 }
 
-button.MuiButtonBase-root.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary.MuiButton-sizeMedium.MuiButton-containedSizeMedium.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary.MuiButton-sizeMedium.MuiButton-containedSizeMedium.css-1etrtkn-MuiButtonBase-root-MuiButton-root {
+/* button.MuiButtonBase-root.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary.MuiButton-sizeMedium.MuiButton-containedSizeMedium.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary.MuiButton-sizeMedium.MuiButton-containedSizeMedium.css-1etrtkn-MuiButtonBase-root-MuiButton-root {
     background-color: #022e58;
-    /* margin-left: 80px; */
-}
+    margin-left: 80px;
+} */
 
 /* button.MuiButtonBase-root.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary.MuiButton-sizeMedium.MuiButton-containedSizeMedium.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary.MuiButton-sizeMedium.MuiButton-containedSizeMedium.css-yqhyg{
   background-color: #043360;
@@ -45,14 +45,14 @@ button.MuiButtonBase-root.MuiButton-root.MuiButton-contained.MuiButton-contained
   margin-top: 30px;
   padding: 10px 20px 10px 20px;
 } */
-button.MuiButtonBase-root.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary.MuiButton-sizeMedium.MuiButton-containedSizeMedium.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary.MuiButton-sizeMedium.MuiButton-containedSizeMedium.css-yet3r3-MuiButtonBase-root-MuiButton-root {
+/* button.MuiButtonBase-root.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary.MuiButton-sizeMedium.MuiButton-containedSizeMedium.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary.MuiButton-sizeMedium.MuiButton-containedSizeMedium.css-yet3r3-MuiButtonBase-root-MuiButton-root {
     background-color: #043360;
     margin-left: 30px;
     text-transform: capitalize;
     margin-top: 30px;
     padding: 10px 20px 10px 20px;
 
-}
+} */
 main.MuiBox-root.css-1jmjcem {
     padding: 0;
 }
@@ -88,7 +88,7 @@ ul.MuiList-root.MuiList-padding.css-h4y409-MuiList-root{
     width: 288px;
   }
 
-  p.MuiTypography-root.MuiTypography-body1.MuiTypography-paragraph.css-z2eky3-MuiTypography-root{
+  /* p.MuiTypography-root.MuiTypography-body1.MuiTypography-paragraph.css-z2eky3-MuiTypography-root{
     margin-top: 50px;
     padding: 80px 46px 20px 20px;
     
@@ -101,7 +101,7 @@ ul.MuiList-root.MuiList-padding.css-h4y409-MuiList-root{
     font-weight: 550 !important;
     color: gray !important;
     
-  }
+  } */
   main.MuiBox-root.css-bxtlg9{
     background-color: white;
     padding: 0px 0 40px 0px;
@@ -121,7 +121,7 @@ ul.MuiList-root.MuiList-padding.css-h4y409-MuiList-root{
     display: flex ;
     justify-content: center;
     align-items: center;
-    transform: translateY(-15px);
+    transform: translateY(-114px);
   }
   .discription{
     margin-bottom: 40px;
