@@ -86,7 +86,7 @@ function WelcomePage() {
           }}
         >
           <Typography variant="h6" noWrap component="div" color="#022e58">
-            Welcome Back!
+            Welcome Back
           </Typography>
           <div style={{ display: "flex", alignItems: "center" }}>
             <div>
@@ -276,6 +276,7 @@ function WelcomePage() {
                 />
               </div>
               <div className="discription" >
+                
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi,
                 deleniti minus ullam omnis optio autem voluptas porro quas
                 adipisci ratione explicabo aut pariatur cupiditate repellendus
@@ -304,12 +305,203 @@ function WelcomePage() {
             </Typography>
           )}
           <div className="main_content">
-               {/* <ChatPage
-
-    message="This is a receiver's message."
-    isSender={false}
-    avatarSrc={profile}
-  />  */}
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi,
+                deleniti minus ullam omnis optio autem voluptas porro quas
+                adipisci ratione explicabo aut pariatur cupiditate repellendus
+                voluptatum. Laboriosam asperiores nostrum ipsum? Lorem ipsum,
+                dolor sit amet consectetur adipisicing elit. Quasi, deleniti
+                minus ullam omnis optio autem voluptas porro quas adipisci
+                ratione explicabo aut pariatur cupiditate repellendus
+                voluptatum. Laboriosam asperiores nostrum ipsum?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi,
+                deleniti minus ullam omnis optio autem voluptas porro quas
+                adipisci ratione explicabo aut pariatur cupiditate repellendus
+                voluptatum. Laboriosam asperiores nostrum ipsum? Lorem ipsum,
+                dolor sit amet consectetur adipisicing elit. Quasi, deleniti
+                minus ullam omnis optio autem voluptas porro quas adipisci
+                ratione explicabo aut pariatur cupiditate repellendus
+                voluptatum. Laboriosam asperiores nostrum ipsum?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi,
+                deleniti minus ullam omnis optio autem voluptas porro quas
+                adipisci ratione explicabo aut pariatur cupiditate repellendus
+                voluptatum. Laboriosam asperiores nostrum ipsum? Lorem ipsum,
+                dolor sit amet consectetur adipisicing elit. Quasi, deleniti
+                minus ullam omnis optio autem voluptas porro quas adipisci
+                ratione explicabo aut pariatur cupiditate repellendus
+                voluptatum. Laboriosam asperiores nostrum ipsum?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi,
+                deleniti minus ullam omnis optio autem voluptas porro quas
+                adipisci ratione explicabo aut pariatur cupiditate repellendus
+                voluptatum. Laboriosam asperiores nostrum ipsum? Lorem ipsum,
+                dolor sit amet consectetur adipisicing elit. Quasi, deleniti
+                minus ullam omnis optio autem voluptas porro quas adipisci
+                ratione explicabo aut pariatur cupiditate repellendus
+                voluptatum. Laboriosam asperiores nostrum ipsum?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi,
+                deleniti minus ullam omnis optio autem voluptas porro quas
+                adipisci ratione explicabo aut pariatur cupiditate repellendus
+                voluptatum. Laboriosam asperiores nostrum ipsum? Lorem ipsum,
+                dolor sit amet consectetur adipisicing elit. Quasi, deleniti
+                minus ullam omnis optio autem voluptas porro quas adipisci
+                ratione explicabo aut pariatur cupiditate repellendus
+                voluptatum. Laboriosam asperiores nostrum ipsum?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi,
+                deleniti minus ullam omnis optio autem voluptas porro quas
+                adipisci ratione explicabo aut pariatur cupiditate repellendus
+                voluptatum. Laboriosam asperiores nostrum ipsum? Lorem ipsum,
+                dolor sit amet consectetur adipisicing elit. Quasi, deleniti
+                minus ullam omnis optio autem voluptas porro quas adipisci
+                ratione explicabo aut pariatur cupiditate repellendus
+                voluptatum. Laboriosam asperiores nostrum ipsum?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi,
+                deleniti minus ullam omnis optio autem voluptas porro quas
+                adipisci ratione explicabo aut pariatur cupiditate repellendus
+                voluptatum. Laboriosam asperiores nostrum ipsum? Lorem ipsum,
+                dolor sit amet consectetur adipisicing elit. Quasi, deleniti
+                minus ullam omnis optio autem voluptas porro quas adipisci
+                ratione explicabo aut pariatur cupiditate repellendus
+                voluptatum. Laboriosam asperiores nostrum ipsum?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi,
+                deleniti minus ullam omnis optio autem voluptas porro quas
+                adipisci ratione explicabo aut pariatur cupiditate repellendus
+                voluptatum. Laboriosam asperiores nostrum ipsum? Lorem ipsum,
+                dolor sit amet consectetur adipisicing elit. Quasi, deleniti
+                minus ullam omnis optio autem voluptas porro quas adipisci
+                ratione explicabo aut pariatur cupiditate repellendus
+                voluptatum. Laboriosam asperiores nostrum ipsum?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi,
+                deleniti minus ullam omnis optio autem voluptas porro quas
+                adipisci ratione explicabo aut pariatur cupiditate repellendus
+                voluptatum. Laboriosam asperiores nostrum ipsum? Lorem ipsum,
+                dolor sit amet consectetur adipisicing elit. Quasi, deleniti
+                minus ullam omnis optio autem voluptas porro quas adipisci
+                ratione explicabo aut pariatur cupiditate repellendus
+                voluptatum. Laboriosam asperiores nostrum ipsum?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi,
+                deleniti minus ullam omnis optio autem voluptas porro quas
+                adipisci ratione explicabo aut pariatur cupiditate repellendus
+                voluptatum. Laboriosam asperiores nostrum ipsum? Lorem ipsum,
+                dolor sit amet consectetur adipisicing elit. Quasi, deleniti
+                minus ullam omnis optio autem voluptas porro quas adipisci
+                ratione explicabo aut pariatur cupiditate repellendus
+                voluptatum. Laboriosam asperiores nostrum ipsum?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi,
+                deleniti minus ullam omnis optio autem voluptas porro quas
+                adipisci ratione explicabo aut pariatur cupiditate repellendus
+                voluptatum. Laboriosam asperiores nostrum ipsum? Lorem ipsum,
+                dolor sit amet consectetur adipisicing elit. Quasi, deleniti
+                minus ullam omnis optio autem voluptas porro quas adipisci
+                ratione explicabo aut pariatur cupiditate repellendus
+                voluptatum. Laboriosam asperiores nostrum ipsum?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi,
+                deleniti minus ullam omnis optio autem voluptas porro quas
+                adipisci ratione explicabo aut pariatur cupiditate repellendus
+                voluptatum. Laboriosam asperiores nostrum ipsum? Lorem ipsum,
+                dolor sit amet consectetur adipisicing elit. Quasi, deleniti
+                minus ullam omnis optio autem voluptas porro quas adipisci
+                ratione explicabo aut pariatur cupiditate repellendus
+                voluptatum. Laboriosam asperiores nostrum ipsum?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi,
+                deleniti minus ullam omnis optio autem voluptas porro quas
+                adipisci ratione explicabo aut pariatur cupiditate repellendus
+                voluptatum. Laboriosam asperiores nostrum ipsum? Lorem ipsum,
+                dolor sit amet consectetur adipisicing elit. Quasi, deleniti
+                minus ullam omnis optio autem voluptas porro quas adipisci
+                ratione explicabo aut pariatur cupiditate repellendus
+                voluptatum. Laboriosam asperiores nostrum ipsum?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi,
+                deleniti minus ullam omnis optio autem voluptas porro quas
+                adipisci ratione explicabo aut pariatur cupiditate repellendus
+                voluptatum. Laboriosam asperiores nostrum ipsum? Lorem ipsum,
+                dolor sit amet consectetur adipisicing elit. Quasi, deleniti
+                minus ullam omnis optio autem voluptas porro quas adipisci
+                ratione explicabo aut pariatur cupiditate repellendus
+                voluptatum. Laboriosam asperiores nostrum ipsum?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi,
+                deleniti minus ullam omnis optio autem voluptas porro quas
+                adipisci ratione explicabo aut pariatur cupiditate repellendus
+                voluptatum. Laboriosam asperiores nostrum ipsum? Lorem ipsum,
+                dolor sit amet consectetur adipisicing elit. Quasi, deleniti
+                minus ullam omnis optio autem voluptas porro quas adipisci
+                ratione explicabo aut pariatur cupiditate repellendus
+                voluptatum. Laboriosam asperiores nostrum ipsum?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi,
+                deleniti minus ullam omnis optio autem voluptas porro quas
+                adipisci ratione explicabo aut pariatur cupiditate repellendus
+                voluptatum. Laboriosam asperiores nostrum ipsum? Lorem ipsum,
+                dolor sit amet consectetur adipisicing elit. Quasi, deleniti
+                minus ullam omnis optio autem voluptas porro quas adipisci
+                ratione explicabo aut pariatur cupiditate repellendus
+                voluptatum. Laboriosam asperiores nostrum ipsum?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi,
+                deleniti minus ullam omnis optio autem voluptas porro quas
+                adipisci ratione explicabo aut pariatur cupiditate repellendus
+                voluptatum. Laboriosam asperiores nostrum ipsum? Lorem ipsum,
+                dolor sit amet consectetur adipisicing elit. Quasi, deleniti
+                minus ullam omnis optio autem voluptas porro quas adipisci
+                ratione explicabo aut pariatur cupiditate repellendus
+                voluptatum. Laboriosam asperiores nostrum ipsum?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi,
+                deleniti minus ullam omnis optio autem voluptas porro quas
+                adipisci ratione explicabo aut pariatur cupiditate repellendus
+                voluptatum. Laboriosam asperiores nostrum ipsum? Lorem ipsum,
+                dolor sit amet consectetur adipisicing elit. Quasi, deleniti
+                minus ullam omnis optio autem voluptas porro quas adipisci
+                ratione explicabo aut pariatur cupiditate repellendus
+                voluptatum. Laboriosam asperiores nostrum ipsum?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi,
+                deleniti minus ullam omnis optio autem voluptas porro quas
+                adipisci ratione explicabo aut pariatur cupiditate repellendus
+                voluptatum. Laboriosam asperiores nostrum ipsum? Lorem ipsum,
+                dolor sit amet consectetur adipisicing elit. Quasi, deleniti
+                minus ullam omnis optio autem voluptas porro quas adipisci
+                ratione explicabo aut pariatur cupiditate repellendus
+                voluptatum. Laboriosam asperiores nostrum ipsum?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi,
+                deleniti minus ullam omnis optio autem voluptas porro quas
+                adipisci ratione explicabo aut pariatur cupiditate repellendus
+                voluptatum. Laboriosam asperiores nostrum ipsum? Lorem ipsum,
+                dolor sit amet consectetur adipisicing elit. Quasi, deleniti
+                minus ullam omnis optio autem voluptas porro quas adipisci
+                ratione explicabo aut pariatur cupiditate repellendus
+                voluptatum. Laboriosam asperiores nostrum ipsum?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi,
+                deleniti minus ullam omnis optio autem voluptas porro quas
+                adipisci ratione explicabo aut pariatur cupiditate repellendus
+                voluptatum. Laboriosam asperiores nostrum ipsum? Lorem ipsum,
+                dolor sit amet consectetur adipisicing elit. Quasi, deleniti
+                minus ullam omnis optio autem voluptas porro quas adipisci
+                ratione explicabo aut pariatur cupiditate repellendus
+                voluptatum. Laboriosam asperiores nostrum ipsum?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi,
+                deleniti minus ullam omnis optio autem voluptas porro quas
+                adipisci ratione explicabo aut pariatur cupiditate repellendus
+                voluptatum. Laboriosam asperiores nostrum ipsum? Lorem ipsum,
+                dolor sit amet consectetur adipisicing elit. Quasi, deleniti
+                minus ullam omnis optio autem voluptas porro quas adipisci
+                ratione explicabo aut pariatur cupiditate repellendus
+                voluptatum. Laboriosam asperiores nostrum ipsum?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi,
+                deleniti minus ullam omnis optio autem voluptas porro quas
+                adipisci ratione explicabo aut pariatur cupiditate repellendus
+                voluptatum. Laboriosam asperiores nostrum ipsum? Lorem ipsum,
+                dolor sit amet consectetur adipisicing elit. Quasi, deleniti
+                minus ullam omnis optio autem voluptas porro quas adipisci
+                ratione explicabo aut pariatur cupiditate repellendus
+                voluptatum. Laboriosam asperiores nostrum ipsum?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi,
+                deleniti minus ullam omnis optio autem voluptas porro quas
+                adipisci ratione explicabo aut pariatur cupiditate repellendus
+                voluptatum. Laboriosam asperiores nostrum ipsum? Lorem ipsum,
+                dolor sit amet consectetur adipisicing elit. Quasi, deleniti
+                minus ullam omnis optio autem voluptas porro quas adipisci
+                ratione explicabo aut pariatur cupiditate repellendus
+                voluptatum. Laboriosam asperiores nostrum ipsum?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi,
+                deleniti minus ullam omnis optio autem voluptas porro quas
+                adipisci ratione explicabo aut pariatur cupiditate repellendus
+                voluptatum. Laboriosam asperiores nostrum ipsum? Lorem ipsum,
+                dolor sit amet consectetur adipisicing elit. Quasi, deleniti
+                minus ullam omnis optio autem voluptas porro quas adipisci
+                ratione explicabo aut pariatur cupiditate repellendus
+                voluptatum. Laboriosam asperiores nostrum ipsum?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi,
+                deleniti minus ullam omnis optio autem voluptas porro quas
+                adipisci ratione explicabo aut pariatur cupiditate repellendus
+                voluptatum. Laboriosam asperiores nostrum ipsum? Lorem ipsum,
+                dolor sit amet consectetur adipisicing elit. Quasi, deleniti
+                minus ullam omnis optio autem voluptas porro quas adipisci
+                ratione explicabo aut pariatur cupiditate repellendus
+                voluptatum. Laboriosam asperiores nostrum ipsum?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi,
+                deleniti minus ullam omnis optio autem voluptas porro quas
+                adipisci ratione explicabo aut pariatur cupiditate repellendus
+                voluptatum. Laboriosam asperiores nostrum ipsum? Lorem ipsum,
+                dolor sit amet consectetur adipisicing elit. Quasi, deleniti
+                minus ullam omnis optio autem voluptas porro quas adipisci
+                ratione explicabo aut pariatur cupiditate repellendus
+                voluptatum. Laboriosam asperiores nostrum ipsum?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi,
+                deleniti minus ullam omnis optio autem voluptas porro quas
+                adipisci ratione explicabo aut pariatur cupiditate repellendus
+                voluptatum. Laboriosam asperiores nostrum ipsum? Lorem ipsum,
+                dolor sit amet consectetur adipisicing elit. Quasi, deleniti
+                minus ullam omnis optio autem voluptas porro quas adipisci
+                ratione explicabo aut pariatur cupiditate repellendus
+                voluptatum. Laboriosam asperiores nostrum ipsum?
           </div>
 
           <div className="chat-input-container">
