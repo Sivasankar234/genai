@@ -155,7 +155,7 @@ function WelcomePage() {
         >
           + New Topic
         </Button>
-        {/* <Divider /> */}
+    
         <Typography
           variant="h6"
           noWrap
@@ -216,7 +216,7 @@ function WelcomePage() {
           ))}
         </List>
 
-        {/* <Divider /> */}
+    
         <div className="sidebar-icons">
           <Box sx={{ display: "flex", position: "fixed", top: "850px",left:'30px' }}>
             {/* <FacebookIcon sx={{marginLeft:'30px',fontSize:'35px'}}/> */}
