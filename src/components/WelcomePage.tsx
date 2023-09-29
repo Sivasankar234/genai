@@ -145,11 +145,17 @@ function WelcomePage() {
         <Toolbar />
         <Button
           variant="contained"
-          sx={{ width: "170px", borderRadius: "10px",backgroundColor:'#043360',textTransform:'capitalize',marginLeft:'50px' }}
+          sx={{ width: "170px",
+           borderRadius: "10px",
+           backgroundColor:'#043360',
+           textTransform:'capitalize',
+           marginLeft:'30px',
+           marginTop:'50px' 
+          }}
         >
           + New Topic
         </Button>
-        <Divider />
+        {/* <Divider /> */}
         <Typography
           variant="h6"
           noWrap
@@ -210,7 +216,7 @@ function WelcomePage() {
           ))}
         </List>
 
-        <Divider />
+        {/* <Divider /> */}
         <div className="sidebar-icons">
           <Box sx={{ display: "flex", position: "fixed", top: "850px",left:'30px' }}>
             {/* <FacebookIcon sx={{marginLeft:'30px',fontSize:'35px'}}/> */}
