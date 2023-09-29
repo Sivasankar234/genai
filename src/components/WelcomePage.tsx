@@ -145,7 +145,7 @@ function WelcomePage() {
         <Toolbar />
         <Button
           variant="contained"
-          sx={{ width: "170px", borderRadius: "10px" }}
+          sx={{ width: "170px", borderRadius: "10px",backgroundColor:'#043360',textTransform:'capitalize' }}
         >
           + New Topic
         </Button>
