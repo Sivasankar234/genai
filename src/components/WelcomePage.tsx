@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -6,7 +6,6 @@ import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
 import Typography from "@mui/material/Typography";
-import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
 import Button from "@mui/material/Button";
 import ListItemButton from "@mui/material/ListItemButton";
@@ -22,15 +21,44 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import ReportGmailerrorredOutlinedIcon from "@mui/icons-material/ReportGmailerrorredOutlined";
 import Avatar from "@mui/material/Avatar";
+// import IconButton from '@mui/material/IconButton';
+import ContentCopyOutlinedIcon from "@mui/icons-material/ContentCopyOutlined";
+import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
 // import ChatPage from '../components/ChatPage';
-
 import SendIcon from "@mui/icons-material/Send";
 import IconButton from "@mui/material/IconButton";
+import ModeEditOutlinedIcon from "@mui/icons-material/ModeEditOutlined";
+import ThumbDownOffAltOutlined from "@mui/icons-material/ThumbDownOffAltOutlined";
+// import {firebaseConfig} from '../db/Config'
+import { initializeApp } from "firebase/app";
+import { getFirestore,collection,addDoc,getDocs } from "@firebase/firestore";
+
+interface QAPair {
+  question: string;
+  answer: string;
+  isAnswerVisible: boolean;
+}
+const firebaseConfig = {
+    apiKey: "AIzaSyAcqqhFJsIerVVo34pj0sbedxKdR5lU1g4",
+    authDomain: "genai-a8293.firebaseapp.com",
+    projectId: "genai-a8293",
+    storageBucket: "genai-a8293.appspot.com",
+    messagingSenderId: "232624579431",
+    appId: "1:232624579431:web:549ad22fd0ef688fa505c2",
+    measurementId: "G-F8C5994CY0"
+  };
 function WelcomePage() {
   const drawerWidth = 240;
-
+const app = initializeApp(firebaseConfig)
+const db = getFirestore(app)
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [showContent, setShowContent] = React.useState(true);
+  const [qaPairs, setQAPairs] = useState<QAPair[]>([]);
+  const [inputQuestion, setInputQuestion] = useState<string>("");
+  const [isMainContentVisible, setIsMainContentVisible] = useState(true);
+  const [recentTopics, setRecentTopics] = useState<string[]>([]);
+
+  // const chatContainerRef = useRef<HTMLDivElement | null>(null);
 
   const handleMenuClick = (event: any) => {
     setAnchorEl(event.currentTarget);
@@ -44,7 +72,14 @@ function WelcomePage() {
   };
   const [isAppBarHidden, setIsAppBarHidden] = React.useState(false);
   // const [appBarBackgroundColor, setAppBarBackgroundColor] = React.useState('#ffffff'); // Set your initial background color here
-
+  const answers = [
+    "Hello, Buddy I'm back 😎",
+    "No Pain No Gain 👍",
+    "The purpose Of our lives is to be happy😍",
+    "Try again later 👍😁",
+    "Ask me friend 🤪",
+    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi, deleniti minus ullam omnis optio autem voluptas porro quas adipisci ratione explicabo aut pariatur cupiditaterepellendus voluptatum. Laboriosam asperiores nostrum ipsum?Lorem ipsum, dolor sit amet consectetur adipisicing elit.Quasi, deleniti minus ullam omnis optio autem voluptas porroquas adipisci ratione explicabo aut pariatur cupiditaterepellendus voluptatum. Laboriosam asperiores nostrum ipsum",
+  ];
   const handleScroll = () => {
     const scrollY = window.scrollY;
     if (scrollY > 50) {
@@ -53,6 +88,129 @@ function WelcomePage() {
       setIsAppBarHidden(false);
     }
   };
+
+  const getRandomAnswer = (): string => {
+    const randomIndex: number = Math.floor(Math.random() * answers.length);
+    return answers[randomIndex];
+  };
+  const handleNewTopicClick = () => {
+    window.location.reload();
+  };
+
+  const handlesubmit = async(e: any) => {
+    e.preventDefault();
+    // if (inputQuestion.trim() !== "") {
+    //   const randomAnswer: string = getRandomAnswer();
+    //   const newQAPair: QAPair = {
+    //     question: inputQuestion,
+    //     answer: randomAnswer,
+    //     isAnswerVisible: false,
+    //   };
+    //   setQAPairs((prevQAPairs) => [...prevQAPairs, newQAPair]); // Use functional update
+    //   setRecentTopics((prevRecentTopics) => [
+    //     inputQuestion,
+    //     ...prevRecentTopics.slice(0, 4), // Keep only the last 4 topics
+    //   ]);
+    //   setInputQuestion("");
+    // }
+
+    if (inputQuestion.trim() !== "") {
+      const randomAnswer: string = getRandomAnswer();
+      const newQAPair: QAPair = {
+        question: inputQuestion,
+        answer: randomAnswer,
+        isAnswerVisible: false,
+      };
+  
+      try {
+        // Add the newQAPair to the Firestore collection
+        const docRef = await addDoc(collection(db, "qapairs"), newQAPair);
+        console.log("Document written with ID: ", docRef.id);
+        const docId = docRef.id;
+        // Update the state to display the new question
+        setQAPairs((prevQAPairs) => [...prevQAPairs, newQAPair]);
+  
+        // Clear the input field
+        setInputQuestion("");
+      } catch (error) {
+        console.error("Error adding document: ", error);
+      }
+    }
+    
+  };
+  const fetchQuestionsFromFirestore = async () => {
+    try {
+      const qapairsCollection = collection(db, "qapairs");
+      const qapairsSnapshot = await getDocs(qapairsCollection);
+      const questions = qapairsSnapshot.docs.map((doc) => doc.data().question);
+      setRecentTopics(questions);
+    } catch (error) {
+      console.error("Error fetching questions: ", error);
+    }
+  };
+
+
+
+  useEffect(() => {
+    fetchQuestionsFromFirestore();
+  }, [recentTopics]);
+
+  useEffect(() => {
+    const lastIndex = qaPairs.length - 1;
+    if (lastIndex >= 0) {
+      setTimeout(() => {
+        revealAnswer(lastIndex);
+      }, 3000);
+    }
+  }, [qaPairs]);
+
+  // const scrollToBottom = () => {
+  //   if (chatContainerRef.current) {
+  //     chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   scrollToBottom();
+  // }, [qaPairs]);
+
+  // useEffect(() => {
+  //   window.addEventListener("scroll", handleScroll);
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll);
+  //   };
+  // }, []);
+
+  const revealAnswer = (index: number): void => {
+    setQAPairs((prevQAPairs) => {
+      const updatedQAPairs: QAPair[] = [...prevQAPairs];
+      // updatedQAPairs[index].answer = getRandomAnswer();
+      updatedQAPairs[index].isAnswerVisible = true;
+      return updatedQAPairs;
+    });
+  };
+
+  const [isEditing, setIsEditing] = useState(false);
+  const [editedQuestion, setEditedQuestion] = useState("");
+
+  const handleEditClick = (index: number) => {
+    setIsEditing(true);
+    setEditedQuestion(qaPairs[index].question);
+  };
+
+  const handleProceedClick = (index: number) => {
+    // Update the question in the qaPairs array with the edited question
+    const updatedQAPairs = [...qaPairs];
+    updatedQAPairs[index].question = editedQuestion;
+    setQAPairs(updatedQAPairs);
+    setIsEditing(false);
+  };
+
+  const handleCancelClick = () => {
+    setIsEditing(false);
+  };
+
+  
 
   React.useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -85,10 +243,16 @@ function WelcomePage() {
             alignItems: "center",
           }}
         >
-          <Typography variant="h6" noWrap component="div" color="#022e58">
-            Welcome Back !
-          </Typography>
-          <div style={{ display: "flex", alignItems: "center" }}>
+          <div className="welcome-title">
+            {" "}
+            <Typography variant="h5" noWrap component="div" color="#022e58">
+              Welcome Back !
+            </Typography>
+          </div>
+          <div
+            className="user-avatar"
+            style={{ display: "flex", alignItems: "center" }}
+          >
             <div>
               <Avatar
                 alt="Remy Sharp"
@@ -145,17 +309,19 @@ function WelcomePage() {
         <Toolbar />
         <Button
           variant="contained"
-          sx={{ width: "170px",
-           borderRadius: "10px",
-           backgroundColor:'#043360',
-           textTransform:'capitalize',
-           marginLeft:'30px',
-           marginTop:'50px' 
+          sx={{
+            width: "170px",
+            borderRadius: "10px",
+            backgroundColor: "#043360",
+            textTransform: "capitalize",
+            marginLeft: "30px",
+            marginTop: "50px",
           }}
+          onClick={handleNewTopicClick}
         >
           + New Topic
         </Button>
-    
+
         <Typography
           variant="h6"
           noWrap
@@ -166,16 +332,10 @@ function WelcomePage() {
             marginRight: "100px",
           }}
         >
-          Recent Topic!
+          Recent Topic
         </Typography>
         <List>
-          {[
-            { text: "Recent Topics" },
-            { text: "Freshers Resume" },
-            {
-              text: "3yrs Experience with a long text that should truncate with ellipsis and align properly",
-            },
-          ].map((item, index) => (
+          {recentTopics.map((item, index) => (
             <ListItem key={index} disablePadding>
               <ListItemButton
                 sx={{
@@ -209,41 +369,42 @@ function WelcomePage() {
                   }}
                   className="marquee"
                 >
-                  {item.text}
+                  {item}
                 </div>
               </ListItemButton>
             </ListItem>
           ))}
         </List>
 
-    
         <div className="sidebar-icons">
-          <Box sx={{ display: "flex", position: "fixed", top: "850px",left:'30px' }}>
+          <Box sx={{ display: "flex", position: "fixed", left: "30px" }}>
             {/* <FacebookIcon sx={{marginLeft:'30px',fontSize:'35px'}}/> */}
-            <ExtensionOutlinedIcon
-              sx={{
-                marginLeft: "30px",
-                fontSize: "30px",
-                color: "#fc5a03",
-                cursor: "pointer",
-              }}
-            />
-            <HelpOutlineOutlinedIcon
-              sx={{
-                marginLeft: "30px",
-                fontSize: "30px",
-                color: "#fc5a03",
-                cursor: "pointer",
-              }}
-            />
-            <SettingsOutlinedIcon
-              sx={{
-                marginLeft: "30px",
-                fontSize: "30px",
-                color: "#fc5a03",
-                cursor: "pointer",
-              }}
-            />
+            <div>
+              <ExtensionOutlinedIcon
+                sx={{
+                  marginLeft: "30px",
+                  fontSize: "30px",
+                  color: "#fc5a03",
+                  cursor: "pointer",
+                }}
+              />
+              <HelpOutlineOutlinedIcon
+                sx={{
+                  marginLeft: "30px",
+                  fontSize: "30px",
+                  color: "#fc5a03",
+                  cursor: "pointer",
+                }}
+              />
+              <SettingsOutlinedIcon
+                sx={{
+                  marginLeft: "30px",
+                  fontSize: "30px",
+                  color: "#fc5a03",
+                  cursor: "pointer",
+                }}
+              />
+            </div>
           </Box>
         </div>
       </Drawer>
@@ -277,34 +438,35 @@ function WelcomePage() {
                     fontSize: "45px",
                     position: "relative",
                     top: "46px",
-                    zIndex:'1',
+                    zIndex: "1",
                     // marginTop:'50px',
                     color: "#fc5a03",
                   }}
                 />
               </div>
-              <div className="discription" >
-                <Typography  component='p' sx={{
-                marginBottom:'50px',
-                padding:'80px 46px 80px 20px',
-                margin:'0px 200px',
-                border:'1px solid black',
-                borderRadius:'10px',
-               fontWeight:'550',
-               color:'gray',
-               backgroundColor:'#fefefe'
-                }}>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi,
-                deleniti minus ullam omnis optio autem voluptas porro quas
-                adipisci ratione explicabo aut pariatur cupiditate repellendus
-                voluptatum. Laboriosam asperiores nostrum ipsum? Lorem ipsum,
-                dolor sit amet consectetur adipisicing elit. Quasi, deleniti
-                minus ullam omnis optio autem voluptas porro quas adipisci
-                ratione explicabo aut pariatur cupiditate repellendus
-                voluptatum. Laboriosam asperiores nostrum ipsum?
+              <div className="discription">
+                <Typography
+                  component="p"
+                  sx={{
+                    marginBottom: "50px",
+                    padding: "80px 46px 80px 20px",
+                    margin: "0px 200px",
+                    border: "1px solid black",
+                    borderRadius: "10px",
+                    fontWeight: "550",
+                    color: "gray",
+                    backgroundColor: "#fefefe",
+                  }}
+                >
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Quasi, deleniti minus ullam omnis optio autem voluptas porro
+                  quas adipisci ratione explicabo aut pariatur cupiditate
+                  repellendus voluptatum. Laboriosam asperiores nostrum ipsum?
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Quasi, deleniti minus ullam omnis optio autem voluptas porro
+                  quas adipisci ratione explicabo aut pariatur cupiditate
+                  repellendus voluptatum. Laboriosam asperiores nostrum ipsum?
                 </Typography>
-                
-              
               </div>
 
               <div className="btn_disc">
@@ -324,204 +486,98 @@ function WelcomePage() {
               </div>
             </Typography>
           )}
+
           <div className="main_content">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi,
-                deleniti minus ullam omnis optio autem voluptas porro quas
-                adipisci ratione explicabo aut pariatur cupiditate repellendus
-                voluptatum. Laboriosam asperiores nostrum ipsum? Lorem ipsum,
-                dolor sit amet consectetur adipisicing elit. Quasi, deleniti
-                minus ullam omnis optio autem voluptas porro quas adipisci
-                ratione explicabo aut pariatur cupiditate repellendus
-                voluptatum. Laboriosam asperiores nostrum ipsum?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi,
-                deleniti minus ullam omnis optio autem voluptas porro quas
-                adipisci ratione explicabo aut pariatur cupiditate repellendus
-                voluptatum. Laboriosam asperiores nostrum ipsum? Lorem ipsum,
-                dolor sit amet consectetur adipisicing elit. Quasi, deleniti
-                minus ullam omnis optio autem voluptas porro quas adipisci
-                ratione explicabo aut pariatur cupiditate repellendus
-                voluptatum. Laboriosam asperiores nostrum ipsum?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi,
-                deleniti minus ullam omnis optio autem voluptas porro quas
-                adipisci ratione explicabo aut pariatur cupiditate repellendus
-                voluptatum. Laboriosam asperiores nostrum ipsum? Lorem ipsum,
-                dolor sit amet consectetur adipisicing elit. Quasi, deleniti
-                minus ullam omnis optio autem voluptas porro quas adipisci
-                ratione explicabo aut pariatur cupiditate repellendus
-                voluptatum. Laboriosam asperiores nostrum ipsum?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi,
-                deleniti minus ullam omnis optio autem voluptas porro quas
-                adipisci ratione explicabo aut pariatur cupiditate repellendus
-                voluptatum. Laboriosam asperiores nostrum ipsum? Lorem ipsum,
-                dolor sit amet consectetur adipisicing elit. Quasi, deleniti
-                minus ullam omnis optio autem voluptas porro quas adipisci
-                ratione explicabo aut pariatur cupiditate repellendus
-                voluptatum. Laboriosam asperiores nostrum ipsum?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi,
-                deleniti minus ullam omnis optio autem voluptas porro quas
-                adipisci ratione explicabo aut pariatur cupiditate repellendus
-                voluptatum. Laboriosam asperiores nostrum ipsum? Lorem ipsum,
-                dolor sit amet consectetur adipisicing elit. Quasi, deleniti
-                minus ullam omnis optio autem voluptas porro quas adipisci
-                ratione explicabo aut pariatur cupiditate repellendus
-                voluptatum. Laboriosam asperiores nostrum ipsum?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi,
-                deleniti minus ullam omnis optio autem voluptas porro quas
-                adipisci ratione explicabo aut pariatur cupiditate repellendus
-                voluptatum. Laboriosam asperiores nostrum ipsum? Lorem ipsum,
-                dolor sit amet consectetur adipisicing elit. Quasi, deleniti
-                minus ullam omnis optio autem voluptas porro quas adipisci
-                ratione explicabo aut pariatur cupiditate repellendus
-                voluptatum. Laboriosam asperiores nostrum ipsum?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi,
-                deleniti minus ullam omnis optio autem voluptas porro quas
-                adipisci ratione explicabo aut pariatur cupiditate repellendus
-                voluptatum. Laboriosam asperiores nostrum ipsum? Lorem ipsum,
-                dolor sit amet consectetur adipisicing elit. Quasi, deleniti
-                minus ullam omnis optio autem voluptas porro quas adipisci
-                ratione explicabo aut pariatur cupiditate repellendus
-                voluptatum. Laboriosam asperiores nostrum ipsum?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi,
-                deleniti minus ullam omnis optio autem voluptas porro quas
-                adipisci ratione explicabo aut pariatur cupiditate repellendus
-                voluptatum. Laboriosam asperiores nostrum ipsum? Lorem ipsum,
-                dolor sit amet consectetur adipisicing elit. Quasi, deleniti
-                minus ullam omnis optio autem voluptas porro quas adipisci
-                ratione explicabo aut pariatur cupiditate repellendus
-                voluptatum. Laboriosam asperiores nostrum ipsum?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi,
-                deleniti minus ullam omnis optio autem voluptas porro quas
-                adipisci ratione explicabo aut pariatur cupiditate repellendus
-                voluptatum. Laboriosam asperiores nostrum ipsum? Lorem ipsum,
-                dolor sit amet consectetur adipisicing elit. Quasi, deleniti
-                minus ullam omnis optio autem voluptas porro quas adipisci
-                ratione explicabo aut pariatur cupiditate repellendus
-                voluptatum. Laboriosam asperiores nostrum ipsum?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi,
-                deleniti minus ullam omnis optio autem voluptas porro quas
-                adipisci ratione explicabo aut pariatur cupiditate repellendus
-                voluptatum. Laboriosam asperiores nostrum ipsum? Lorem ipsum,
-                dolor sit amet consectetur adipisicing elit. Quasi, deleniti
-                minus ullam omnis optio autem voluptas porro quas adipisci
-                ratione explicabo aut pariatur cupiditate repellendus
-                voluptatum. Laboriosam asperiores nostrum ipsum?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi,
-                deleniti minus ullam omnis optio autem voluptas porro quas
-                adipisci ratione explicabo aut pariatur cupiditate repellendus
-                voluptatum. Laboriosam asperiores nostrum ipsum? Lorem ipsum,
-                dolor sit amet consectetur adipisicing elit. Quasi, deleniti
-                minus ullam omnis optio autem voluptas porro quas adipisci
-                ratione explicabo aut pariatur cupiditate repellendus
-                voluptatum. Laboriosam asperiores nostrum ipsum?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi,
-                deleniti minus ullam omnis optio autem voluptas porro quas
-                adipisci ratione explicabo aut pariatur cupiditate repellendus
-                voluptatum. Laboriosam asperiores nostrum ipsum? Lorem ipsum,
-                dolor sit amet consectetur adipisicing elit. Quasi, deleniti
-                minus ullam omnis optio autem voluptas porro quas adipisci
-                ratione explicabo aut pariatur cupiditate repellendus
-                voluptatum. Laboriosam asperiores nostrum ipsum?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi,
-                deleniti minus ullam omnis optio autem voluptas porro quas
-                adipisci ratione explicabo aut pariatur cupiditate repellendus
-                voluptatum. Laboriosam asperiores nostrum ipsum? Lorem ipsum,
-                dolor sit amet consectetur adipisicing elit. Quasi, deleniti
-                minus ullam omnis optio autem voluptas porro quas adipisci
-                ratione explicabo aut pariatur cupiditate repellendus
-                voluptatum. Laboriosam asperiores nostrum ipsum?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi,
-                deleniti minus ullam omnis optio autem voluptas porro quas
-                adipisci ratione explicabo aut pariatur cupiditate repellendus
-                voluptatum. Laboriosam asperiores nostrum ipsum? Lorem ipsum,
-                dolor sit amet consectetur adipisicing elit. Quasi, deleniti
-                minus ullam omnis optio autem voluptas porro quas adipisci
-                ratione explicabo aut pariatur cupiditate repellendus
-                voluptatum. Laboriosam asperiores nostrum ipsum?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi,
-                deleniti minus ullam omnis optio autem voluptas porro quas
-                adipisci ratione explicabo aut pariatur cupiditate repellendus
-                voluptatum. Laboriosam asperiores nostrum ipsum? Lorem ipsum,
-                dolor sit amet consectetur adipisicing elit. Quasi, deleniti
-                minus ullam omnis optio autem voluptas porro quas adipisci
-                ratione explicabo aut pariatur cupiditate repellendus
-                voluptatum. Laboriosam asperiores nostrum ipsum?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi,
-                deleniti minus ullam omnis optio autem voluptas porro quas
-                adipisci ratione explicabo aut pariatur cupiditate repellendus
-                voluptatum. Laboriosam asperiores nostrum ipsum? Lorem ipsum,
-                dolor sit amet consectetur adipisicing elit. Quasi, deleniti
-                minus ullam omnis optio autem voluptas porro quas adipisci
-                ratione explicabo aut pariatur cupiditate repellendus
-                voluptatum. Laboriosam asperiores nostrum ipsum?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi,
-                deleniti minus ullam omnis optio autem voluptas porro quas
-                adipisci ratione explicabo aut pariatur cupiditate repellendus
-                voluptatum. Laboriosam asperiores nostrum ipsum? Lorem ipsum,
-                dolor sit amet consectetur adipisicing elit. Quasi, deleniti
-                minus ullam omnis optio autem voluptas porro quas adipisci
-                ratione explicabo aut pariatur cupiditate repellendus
-                voluptatum. Laboriosam asperiores nostrum ipsum?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi,
-                deleniti minus ullam omnis optio autem voluptas porro quas
-                adipisci ratione explicabo aut pariatur cupiditate repellendus
-                voluptatum. Laboriosam asperiores nostrum ipsum? Lorem ipsum,
-                dolor sit amet consectetur adipisicing elit. Quasi, deleniti
-                minus ullam omnis optio autem voluptas porro quas adipisci
-                ratione explicabo aut pariatur cupiditate repellendus
-                voluptatum. Laboriosam asperiores nostrum ipsum?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi,
-                deleniti minus ullam omnis optio autem voluptas porro quas
-                adipisci ratione explicabo aut pariatur cupiditate repellendus
-                voluptatum. Laboriosam asperiores nostrum ipsum? Lorem ipsum,
-                dolor sit amet consectetur adipisicing elit. Quasi, deleniti
-                minus ullam omnis optio autem voluptas porro quas adipisci
-                ratione explicabo aut pariatur cupiditate repellendus
-                voluptatum. Laboriosam asperiores nostrum ipsum?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi,
-                deleniti minus ullam omnis optio autem voluptas porro quas
-                adipisci ratione explicabo aut pariatur cupiditate repellendus
-                voluptatum. Laboriosam asperiores nostrum ipsum? Lorem ipsum,
-                dolor sit amet consectetur adipisicing elit. Quasi, deleniti
-                minus ullam omnis optio autem voluptas porro quas adipisci
-                ratione explicabo aut pariatur cupiditate repellendus
-                voluptatum. Laboriosam asperiores nostrum ipsum?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi,
-                deleniti minus ullam omnis optio autem voluptas porro quas
-                adipisci ratione explicabo aut pariatur cupiditate repellendus
-                voluptatum. Laboriosam asperiores nostrum ipsum? Lorem ipsum,
-                dolor sit amet consectetur adipisicing elit. Quasi, deleniti
-                minus ullam omnis optio autem voluptas porro quas adipisci
-                ratione explicabo aut pariatur cupiditate repellendus
-                voluptatum. Laboriosam asperiores nostrum ipsum?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi,
-                deleniti minus ullam omnis optio autem voluptas porro quas
-                adipisci ratione explicabo aut pariatur cupiditate repellendus
-                voluptatum. Laboriosam asperiores nostrum ipsum? Lorem ipsum,
-                dolor sit amet consectetur adipisicing elit. Quasi, deleniti
-                minus ullam omnis optio autem voluptas porro quas adipisci
-                ratione explicabo aut pariatur cupiditate repellendus
-                voluptatum. Laboriosam asperiores nostrum ipsum?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi,
-                deleniti minus ullam omnis optio autem voluptas porro quas
-                adipisci ratione explicabo aut pariatur cupiditate repellendus
-                voluptatum. Laboriosam asperiores nostrum ipsum? Lorem ipsum,
-                dolor sit amet consectetur adipisicing elit. Quasi, deleniti
-                minus ullam omnis optio autem voluptas porro quas adipisci
-                ratione explicabo aut pariatur cupiditate repellendus
-                voluptatum. Laboriosam asperiores nostrum ipsum?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi,
-                deleniti minus ullam omnis optio autem voluptas porro quas
-                adipisci ratione explicabo aut pariatur cupiditate repellendus
-                voluptatum. Laboriosam asperiores nostrum ipsum? Lorem ipsum,
-                dolor sit amet consectetur adipisicing elit. Quasi, deleniti
-                minus ullam omnis optio autem voluptas porro quas adipisci
-                ratione explicabo aut pariatur cupiditate repellendus
-                voluptatum. Laboriosam asperiores nostrum ipsum?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi,
-                deleniti minus ullam omnis optio autem voluptas porro quas
-                adipisci ratione explicabo aut pariatur cupiditate repellendus
-                voluptatum. Laboriosam asperiores nostrum ipsum? Lorem ipsum,
-                dolor sit amet consectetur adipisicing elit. Quasi, deleniti
-                minus ullam omnis optio autem voluptas porro quas adipisci
-                ratione explicabo aut pariatur cupiditate repellendus
-                voluptatum. Laboriosam asperiores nostrum ipsum?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi,
-                deleniti minus ullam omnis optio autem voluptas porro quas
-                adipisci ratione explicabo aut pariatur cupiditate repellendus
-                voluptatum. Laboriosam asperiores nostrum ipsum? Lorem ipsum,
-                dolor sit amet consectetur adipisicing elit. Quasi, deleniti
-                minus ullam omnis optio autem voluptas porro quas adipisci
-                ratione explicabo aut pariatur cupiditate repellendus
-                voluptatum. Laboriosam asperiores nostrum ipsum?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi,
-                deleniti minus ullam omnis optio autem voluptas porro quas
-                adipisci ratione explicabo aut pariatur cupiditate repellendus
-                voluptatum. Laboriosam asperiores nostrum ipsum? Lorem ipsum,
-                dolor sit amet consectetur adipisicing elit. Quasi, deleniti
-                minus ullam omnis optio autem voluptas porro quas adipisci
-                ratione explicabo aut pariatur cupiditate repellendus
-                voluptatum. Laboriosam asperiores nostrum ipsum?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi,
-                deleniti minus ullam omnis optio autem voluptas porro quas
-                adipisci ratione explicabo aut pariatur cupiditate repellendus
-                voluptatum. Laboriosam asperiores nostrum ipsum? Lorem ipsum,
-                dolor sit amet consectetur adipisicing elit. Quasi, deleniti
-                minus ullam omnis optio autem voluptas porro quas adipisci
-                ratione explicabo aut pariatur cupiditate repellendus
-                voluptatum. Laboriosam asperiores nostrum ipsum?
+            {qaPairs.map((question, index) => (
+              <div key={index} style={{ display: "flex", flexWrap: "wrap" }}>
+                <div className="box3 sb13" style={{ width: "100%" }}>
+                  {isEditing ? (
+                    <input
+                      type="text"
+                      value={editedQuestion}
+                      onChange={(e) => setEditedQuestion(e.target.value)}
+                      className="edit-input"
+                    />
+                   
+                  ) : (
+                    <Typography sx={{ width: "100%", textAlign: "justify" }}>
+                      {question.question}
+                    </Typography>
+                  )}
+                  <div style={{ position: "absolute", top: 5, right: 30 }}>
+                    {isEditing ? (
+                      <div className="edit-button-container">
+                        <Button
+                          variant="contained"
+                          color="primary"
+                          onClick={() => handleProceedClick(index)}
+                          sx={{ backgroundColor: "#E4672D" }}
+                        >
+                          Proceed
+                        </Button>
+                        <Button
+                          variant="outlined"
+                          onClick={handleCancelClick}
+                          sx={{ backgroundColor: "#D9D9D9", color: "#383E55" }}
+                        >
+                          Cancel
+                        </Button>
+                      </div>
+                    ) : (
+                      <IconButton
+                        color="primary"
+                        size="large"
+                        onClick={() => handleEditClick(index)}
+                      >
+                        <ModeEditOutlinedIcon
+                          sx={{ color: "#ffffff", cursor: "pointer" }}
+                        />
+                      </IconButton>
+                    )}
+                  </div>
+                </div>
+
+                <Avatar className="avatar1" src={profile} alt="User 1 Avatar" />
+
+                <Avatar
+                  className="avatar2"
+                  src={profile}
+                  alt="User 1 Avatar"
+                  style={{ marginLeft: "auto" }}
+                />
+
+                <div className="box4 sb14" style={{ width: "100%" }}>
+                  <Typography
+                    sx={{
+                      marginTop: "40px",
+                      padding: "0 20px",
+                      textAlign: "justify",
+                    }}
+                  >
+                    {question.isAnswerVisible ? (
+                      <div>{question.answer}</div>
+                    ) : (
+                      <p style={{ color: "blue" }}>Loading...</p>
+                    )}
+                  </Typography>
+                  <div style={{ position: "absolute", top: 5, right: 30 }}>
+                    <IconButton color="primary" size="small">
+                      <ContentCopyOutlinedIcon sx={{ color: "#BEBCBB" }} />
+                    </IconButton>
+                    <IconButton color="primary" size="small">
+                      <ThumbUpOutlinedIcon sx={{ color: "#A2F6AA" }} />
+                    </IconButton>
+                    <IconButton
+                      color="primary"
+                      size="small"
+                      sx={{ color: "#F6BDA2" }}
+                    >
+                      <ThumbDownOffAltOutlined />
+                    </IconButton>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
 
           <div className="chat-input-container">
@@ -529,8 +585,15 @@ function WelcomePage() {
               type="text"
               placeholder="start chat with cloudside"
               className="chat_input"
+              value={inputQuestion}
+              onChange={(e) => setInputQuestion(e.target.value)}
             />
-            <IconButton aria-label="delete" size="small">
+            <IconButton
+              aria-label="delete"
+              size="large"
+              type="submit"
+              onClick={handlesubmit}
+            >
               <SendIcon sx={{ fontSize: "40px", color: "#fc5a03" }} />
             </IconButton>
           </div>

@@ -16,10 +16,48 @@ import {
 import VisibilityIcon from "@mui/icons-material/VisibilityOutlined";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOffOutlined";
 import { useNavigate } from "react-router-dom";
+import { log } from "console";
+
+
+interface User {
+  email: string;
+  password: string;
+}
+
 function LogIn() {
   const [showPassword, setShowPassword] = useState(false); // State to toggle password visibility
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [error, setError] = useState<string>("");
   const handleClickShowPassword = () => setShowPassword(!showPassword);
+
 const navigate = useNavigate()
+const users: User[] = [
+  { email: "user1@example.com", password: "password1" },
+  { email: "user2@example.com", password: "password2" },
+  { email: "user3@example.com", password: "password3" },
+  { email: "user4@example.com", password: "password4" },
+  { email: "user5@example.com", password: "password5" },
+];
+const handleSubmit = (e: React.FormEvent) => {
+  e.preventDefault();
+  console.log("Submitted Email:", email);
+  console.log("Submitted Password:", password);
+  console.log("Users Array:", users);
+  // Find a user with matching email and password
+  const user = users.find(
+    (user) => user.email === email && user.password === password
+  );
+console.log(user);
+
+  if (user) {
+    // If a user is found, navigate to the welcome page
+    navigate("/welcomepage");
+  } else {
+    // If no matching user is found, display an error message
+    setError("*Invalid email or password");
+  }
+};
   return (
     <div className="container back-imag">
       <div className="loginLeft">
@@ -42,7 +80,7 @@ const navigate = useNavigate()
       <div className="card-div">
         {/* login form card */}
         <Card className="login-card" sx={{ borderRadius: "20px" }}>
-          <form className="login-form">
+          <form className="login-form" onSubmit={handleSubmit}>
             <div className="cloud-logo">
               <img src={CloudSidelogo} alt="logo" width={200} />
             </div>
@@ -61,7 +99,9 @@ const navigate = useNavigate()
                   fontWeight: "800px",
                   borderStyle: "none",
                 }}
+                onChange={(e) => setEmail(e.target.value)}
               />
+               {error && <div className="error-message" style={{color:'red',textAlign:'start',paddingLeft:'50px'}}>{error}</div>}
               <br />
               <br />
               <TextField
@@ -69,6 +109,7 @@ const navigate = useNavigate()
                 label={<span className="user-label">Password</span>}
                 type={showPassword ? "text" : "password"}
                 variant="standard"
+                onChange={(e) => setPassword(e.target.value)}
                 sx={{ width: "400px" }}
                 InputProps={{
                   style: {
@@ -91,7 +132,7 @@ const navigate = useNavigate()
                   ),
                 }}
               />
-
+            {error && <div className="error-message"  style={{color:'red',textAlign:'start',paddingLeft:'50px'}}>{error}</div>}
               <br />
               <br />
               <Box
@@ -143,7 +184,8 @@ const navigate = useNavigate()
                   fontSize: "17px",
                 }}
                 className="form-btn"
-                onClick={()=>navigate('/welcomepage')}
+                type="submit"
+                
               >
                 Log In
               </Button>

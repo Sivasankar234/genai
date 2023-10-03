@@ -25,6 +25,9 @@ header.MuiPaper-root.MuiPaper-elevation.MuiPaper-elevation4.MuiAppBar-root.MuiAp
   background-color: #fff;
   box-shadow: 0 0 0 0;
 }
+.css-1qizv2y-MuiButtonBase-root-MuiButton-root:hover{
+  background-color: #022e58 !important;
+}
 .logo{
     margin-top: 35px;
     margin-bottom: -54px;
@@ -53,6 +56,118 @@ header.MuiPaper-root.MuiPaper-elevation.MuiPaper-elevation4.MuiAppBar-root.MuiAp
     padding: 10px 20px 10px 20px;
 
 } */
+.box3 {
+  border-radius: 15px;
+  background: #6B77A7;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  font-weight: 900;
+  font-family: arial;
+  position: relative;
+  /* width: 1200px; */
+  margin-bottom: 20px; /* Add some spacing between speech bubbles */
+  /* margin-right: 200px; */
+}
+
+.box4 {
+  border-radius: 15px;
+  background: #fff;
+  color: black;
+  padding: 20px;
+  text-align: center;
+  font-weight: 900;
+  font-family: arial;
+  position: relative;
+  margin-bottom: 20px; /* Add some spacing between speech bubbles */
+  /* margin-left: 60px; */
+
+}
+
+/* speech bubble 13 */
+.sb13:before {
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  border-left: 15px solid #6B77A7;
+  border-right: 15px solid transparent;
+  border-top: 15px solid #6B77A7;
+  border-bottom: 15px solid transparent;
+  right: -16px;
+  top: 0;
+}
+
+/* speech bubble 14 */
+.sb14:before {
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  border-left: 15px solid transparent;
+  border-right: 15px solid white;
+  border-top: 15px solid white;
+  border-bottom: 15px solid transparent;
+  left: -16px;
+  top: 0;
+}
+/* Add responsive styles for the edit input */
+.edit-input {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  background-color: #6B77A7;
+  outline: none;
+  border-bottom: 1px solid white;
+  border-top: none ;
+  border-left: none;
+  border-right: none;
+}
+
+/* Style the container for "Proceed" and "Cancel" buttons */
+.edit-button-container {
+  display: flex;
+  
+  justify-content: space-between;
+  margin-top: 10px; /* Add margin for spacing */
+}
+
+/* Style the "Proceed" and "Cancel" buttons */
+.edit-button-container button {
+  flex: 1;
+  margin: 0 5px;
+}
+
+/* Avatars */
+.chat-container {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px; /* Add some spacing between speech bubbles */
+}
+/* .side-cont{
+  display: flex;
+  justify-content: space-around;
+} */
+
+.avatar1 {
+  position: absolute;
+  right: 50px;
+  top: 20px;
+  margin-left: -15px;
+  margin-top: -10px;
+}
+
+.avatar2 {
+  position: absolute;
+  left: 80px;
+  bottom: 90px;
+  margin-right: 20px;
+  margin-top: -10px;
+  }
+
+/* Rest of your existing CSS code for speech bubbles */
+/* ... (Your existing CSS code for .box3, .sb13, .sb14, etc.) */
+
 main.MuiBox-root.css-1jmjcem {
     padding: 0;
 }
@@ -112,8 +227,8 @@ ul.MuiList-root.MuiList-padding.css-h4y409-MuiList-root{
   }
 .main_content{
   margin-top: 47px;
-  margin-left: 200px;
-  margin-right: 200px;
+  margin-left: 250px;
+  margin-right: 250px;
   padding-bottom: 150px;
   text-align: justify;
 }
@@ -121,7 +236,11 @@ ul.MuiList-root.MuiList-padding.css-h4y409-MuiList-root{
     display: flex ;
     justify-content: center;
     align-items: center;
-    transform: translateY(-114px);
+    position: relative;
+    bottom: 120px;
+    
+   
+    
   }
   .discription{
     margin-bottom: 40px;
@@ -142,11 +261,12 @@ ul.MuiList-root.MuiList-padding.css-h4y409-MuiList-root{
   }
   
   .chat_input{
-    width: 1180px;
-    height: 50px;
+    width: 1380px;
+    height: 70px;
     border-radius: 15px;
-    border: 2px solid rgb(151, 149, 149);
-    margin-left: 450px;
+    border: 3px solid rgb(151, 149, 149);
+    margin-left: 420px;
+    padding-left: 50px;
   }
   .chat_input:focus {
     outline: none;
@@ -154,20 +274,20 @@ ul.MuiList-root.MuiList-padding.css-h4y409-MuiList-root{
     
   }
   .chat_input::placeholder {
-    color: #999; /* Change the color to your desired placeholder color */
-   font-size: large; /* Optionally, you can style the placeholder text further */
-    transform: translateX(30px);
+    color: #999;
+   font-size: large; 
+   font-weight: 600;
   }
   /* ChatBubble.css */
 
-  .talk-bubble {
+  /* .talk-bubble {
     margin: 40px;
     display: inline-block;
     position: relative;
     width: 200px;
     height: auto;
     background-color: lightyellow;
-  }
+  } */
   .tri-right.left-top:after{
     content: ' ';
     position: absolute;
@@ -181,7 +301,25 @@ ul.MuiList-root.MuiList-padding.css-h4y409-MuiList-root{
     border-color: lightyellow transparent transparent transparent;
   }
 
-  @media (min-width: 675) {
+  .welcome-title{
+    margin-left: 20px;
+    font-size: 25px !important;
+  }
+
+  .user-avatar{
+    margin-right: 40px;
+  }
+  .sidebar-icons {
+    position: fixed;
+    top: 900px ; 
+    left: 30px;
+}
+
+  .css-4tg2l8-MuiTypography-root{
+    margin: 0px 122px !important;
+  }
+
+  /* @media (min-width: 675) {
     .MuiBox-root.css-unpf1n {
       position: fixed;
       top: 822px;
@@ -191,7 +329,14 @@ ul.MuiList-root.MuiList-padding.css-h4y409-MuiList-root{
   @media (min-width: 768) {
     .sidebar-icons {
       position: fixed;
-      top: 700px;
+      top: 700px !important; 
       left: 30px;
   }
   }
+  @media (min-width: 680) {
+    .sidebar-icons {
+      position: fixed;
+      top: 1000px !important; 
+      left: 30px;
+  }
+  } */
